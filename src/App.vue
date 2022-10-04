@@ -1,8 +1,15 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <PlayerView />
+    <PlaylistView />
+    <Background />
+  </div>
 </template>
 
-<script setup>
+<script>
+import PlaylistView from "./components/playlist/PlaylistView.vue";
+import PlayerView from "./components/player/PlayerView.vue";
+import Background from "./components/common/Background.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faHeart as faHeartOutline } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -39,6 +46,19 @@ library.add(
   faHeart,
   faHeartOutline
 );
+
+import { mapMutations } from "vuex";
+import { songs } from "./assets/songs";
+
+export default {
+  components: { PlaylistView, PlayerView, Background },
+  methods: {
+    ...mapMutations(["addSongs"]),
+  },
+  created() {
+    this.addSongs(songs);
+  },
+};
 </script>
 
 <style scoped></style>

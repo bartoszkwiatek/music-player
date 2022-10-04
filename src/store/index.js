@@ -15,6 +15,9 @@ export default new Vuex.Store({
     songs: [],
   },
   getters: {
+    currentSong(state) {
+      return state.songs[state.currentSongIndex];
+    },
     nextSongIndex(state) {
       const nextSongIndex = state.currentSongIndex + 1;
       const lastSongIndex = state.songs.length - 1;
