@@ -84,6 +84,7 @@ export default {
   z-index: 10;
   width: 360px;
   height: 480px;
+  margin: 2rem auto;
   background-color: var(--background-color);
   border-radius: 40px;
   overflow: hidden;
