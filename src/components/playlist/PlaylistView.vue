@@ -5,7 +5,7 @@
       <h2 class="playlist-title">Playlist</h2>
     </div>
 
-    <PlaylistList />
+    <PlaylistList @go-back="goBack" />
   </div>
 </template>
 

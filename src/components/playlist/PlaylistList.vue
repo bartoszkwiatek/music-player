@@ -5,7 +5,7 @@
         v-for="(song, index) in songs"
         :key="index"
         :song="song"
-        @click="onClickSong(index)"
+        @click.native="onClickSong(index)"
         @toggle-favourite="onToggleFavourite(index)"
       />
     </div>
@@ -28,6 +28,7 @@ export default {
     ...mapMutations(["playSong", "toggleFavourite"]),
     onClickSong(index) {
       this.playSong(index);
+      this.$emit("go-back");
     },
     onToggleFavourite(index) {
       this.toggleFavourite(index);

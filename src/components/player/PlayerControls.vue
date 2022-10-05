@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <RoundButton icon="fa-share-nodes" class="left" />
+    <RoundButton @click.native="share" icon="fa-share-nodes" class="left" />
     <RoundButton
       @click.native="skip(previousSongIndex)"
       :disabled="previousSongIndex === null"
@@ -63,6 +63,11 @@ export default {
     },
     toggleFav() {
       this.toggleFavourite(this.currentSongIndex);
+    },
+    share() {
+      navigator.clipboard.writeText(
+        `${this.currentSong.artist}: ${this.currentSong.title}`
+      );
     },
   },
 };
