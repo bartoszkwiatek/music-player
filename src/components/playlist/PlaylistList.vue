@@ -1,12 +1,15 @@
 <template>
-  <div v-if="songs">
-    <PlaylistSong
-      v-for="(song, index) in songs"
-      :key="index"
-      :song="song"
-      @click="onClickSong(index)"
-      @toggle-favourite="onToggleFavourite(index)"
-    />
+  <div class="songs-container">
+    <div v-if="songs" class="song-list">
+      <PlaylistSong
+        v-for="(song, index) in songs"
+        :key="index"
+        :song="song"
+        @click="onClickSong(index)"
+        @toggle-favourite="onToggleFavourite(index)"
+      />
+    </div>
+    <div class="fade" />
   </div>
 </template>
 
@@ -33,4 +36,30 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.songs-container {
+  position: relative;
+}
+.song-list {
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 380px;
+  overflow: auto;
+}
+
+.fade {
+  position: absolute;
+  bottom: 0px;
+
+  display: block;
+
+  width: 100%;
+  height: 100px;
+
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    var(--background-color) 100%
+  );
+}
+</style>
