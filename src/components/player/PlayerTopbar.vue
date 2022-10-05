@@ -3,7 +3,9 @@
     <FontAwesomeIcon icon="fa-shuffle" />
     <FontAwesomeIcon icon="fa-repeat" />
     <FontAwesomeIcon icon="fa-rotate-right" />
-    <FontAwesomeIcon icon="fa-bars" />
+    <div @click="openPlaylist">
+      <FontAwesomeIcon icon="fa-bars" />
+    </div>
   </div>
 </template>
 

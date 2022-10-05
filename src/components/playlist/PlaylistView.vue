@@ -1,6 +1,8 @@
 <template>
   <div>
-    <FontAwesomeIcon icon="fa-reply" />
+    <div @click="goBack">
+      <FontAwesomeIcon icon="fa-reply" />
+    </div>
 
     <PlaylistList />
   </div>
@@ -13,8 +15,10 @@ import PlaylistList from "./PlaylistList.vue";
 export default {
   name: "PlaylistView",
   components: { PlaylistList, FontAwesomeIcon },
-  onBack() {
-    this.$emit("go-back");
+  methods: {
+    goBack() {
+      this.$emit("go-back");
+    },
   },
 };
 </script>

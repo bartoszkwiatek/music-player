@@ -1,10 +1,13 @@
 <template>
-  <img
-    v-if="image"
-    :src="`src/assets/img/${image}`"
-    alt="background-image"
-    class="background"
-  />
+  <div>
+    <div class="background blur" />
+    <img
+      v-if="image"
+      :src="`src/assets/img/${image}`"
+      alt="background-image"
+      class="background"
+    />
+  </div>
 </template>
 
 <script>
@@ -29,6 +32,10 @@ export default {
   top: 0;
   left: 0;
   z-index: 0;
-  background-image: var(--bg-image);
+}
+
+.blur {
+  z-index: 1;
+  backdrop-filter: blur(75px);
 }
 </style>

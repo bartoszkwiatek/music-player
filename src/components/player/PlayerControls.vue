@@ -1,35 +1,85 @@
 <template>
-  <div style="display: flex">
-    <FontAwesomeIcon icon="fa-pause" />
-    <FontAwesomeIcon icon="fa-play" />
-    <FontAwesomeIcon icon="fa-solid fa-heart" />
-    <FontAwesomeIcon icon="fa-regular fa-heart" />
-    <FontAwesomeIcon icon="fa-share-nodes" />
-    <FontAwesomeIcon icon="fa-forward-step" />
-    <FontAwesomeIcon icon="fa-backward-step" />
+  <div class="container">
+    <RoundButton icon="fa-share-nodes" class="left" />
+    <RoundButton
+      @click.native="skip(previousSongIndex)"
+      :disabled="!previousSongIndex"
+      icon="fa-backward-step"
+      color="#fff"
+      backgroundColor="#60558f"
+    />
+    <PlayButton />
+    <RoundButton
+      @click.native="skip(nextSongIndex)"
+      :disabled="!nextSongIndex"
+      icon="fa-forward-step"
+      color="#fff"
+      backgroundColor="#60558f"
+    />
+    <RoundButton
+      @click.native="toggleFav"
+      :icon="heartProps.icon"
+      :color="heartProps.color"
+      class="right"
+    />
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import RoundButton from "../common/RoundButton.vue";
+import PlayButton from "./PlayButton.vue";
 
 export default {
   name: "PlayerControls",
-  components: { FontAwesomeIcon },
+  components: { PlayButton, RoundButton },
   computed: {
-    ...mapGetters(["nextSongIndex", "previousSongIndex"]),
+    ...mapGetters(["nextSongIndex", "previousSongIndex", "currentSong"]),
     songs() {
       return this.$store.state.songs;
     },
     currentSongIndex() {
       return this.$store.state.currentSongIndex;
     },
+    heartProps() {
+      if (this.currentSong.favourite) {
+        return {
+          icon: "fa-solid fa-heart",
+          color: "#ed5e74",
+        };
+      }
+      return {
+        icon: "fa-regular fa-heart",
+        color: "#60558f",
+      };
+    },
   },
   methods: {
     ...mapMutations(["playSong", "toggleFavourite"]),
+    skip(index) {
+      this.playSong(index);
+    },
+    toggleFav() {
+      this.toggleFavourite(this.currentSongIndex);
+    },
   },
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  .left {
+    margin-right: 35px;
+  }
+
+  .right {
+    margin-left: 35px;
+  }
+}
+</style>

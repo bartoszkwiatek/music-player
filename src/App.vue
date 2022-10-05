@@ -1,7 +1,15 @@
 <template>
   <div id="app">
-    <PlayerView />
-    <PlaylistView />
+    <main class="player">
+      <PlayerView
+        v-if="currentWindow === 'player'"
+        @open-playlist="open('playlist')"
+      />
+      <PlaylistView
+        v-if="currentWindow === 'playlist'"
+        @go-back="open('player')"
+      />
+    </main>
     <Background />
   </div>
 </template>
@@ -51,9 +59,17 @@ import { mapMutations } from "vuex";
 import { songs } from "./assets/songs";
 
 export default {
+  data() {
+    return {
+      currentWindow: "player",
+    };
+  },
   components: { PlaylistView, PlayerView, Background },
   methods: {
     ...mapMutations(["addSongs"]),
+    open(component) {
+      this.currentWindow = component;
+    },
   },
   created() {
     this.addSongs(songs);
@@ -61,4 +77,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.player {
+  position: relative;
+  z-index: 10;
+  width: 360px;
+  height: 480px;
+  background-color: #eeeff5;
+  border-radius: 40px;
+  overflow: hidden;
+}
+</style>
