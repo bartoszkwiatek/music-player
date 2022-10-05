@@ -1,6 +1,6 @@
 <template>
   <button class="round-button" :style="css" :disabled="disabled">
-    <FontAwesomeIcon :icon="icon" :color="color" />
+    <FontAwesomeIcon :icon="icon" :color="color" :size="size" />
   </button>
 </template>
 
@@ -24,6 +24,10 @@ export default {
     backgroundColor: {
       type: String,
       default: "#fff", // white
+    },
+    size: {
+      type: String,
+      default: "md",
     },
   },
   components: { FontAwesomeIcon },

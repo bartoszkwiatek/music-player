@@ -1,12 +1,13 @@
 <template>
   <div class="play">
-    <ProgressRing :progress="33" />
+    <ProgressRing :progress="progress" />
     <RoundButton
       @click.native="togglePlay"
       :icon="icon"
       color="#fff"
       backgroundColor="#60558f"
       class="big-button"
+      size="2xl"
     />
   </div>
 </template>
@@ -20,6 +21,7 @@ export default {
   data() {
     return {
       play: true,
+      progress: 33,
     };
   },
   computed: {

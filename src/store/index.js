@@ -8,8 +8,8 @@ export default new Vuex.Store({
     currentSongIndex: 0,
     settings: {
       volume: 50,
-      random: false,
       repeat: false,
+      random: false,
       loop: false,
     },
     songs: [],

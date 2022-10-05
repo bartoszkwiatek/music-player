@@ -1,5 +1,5 @@
 {
-  "name": "music-player-template",
+  "name": "music-player",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

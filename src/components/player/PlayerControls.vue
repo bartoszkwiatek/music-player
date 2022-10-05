@@ -7,6 +7,7 @@
       icon="fa-backward-step"
       color="#fff"
       backgroundColor="#60558f"
+      size="lg"
     />
     <PlayButton />
     <RoundButton
@@ -15,6 +16,7 @@
       icon="fa-forward-step"
       color="#fff"
       backgroundColor="#60558f"
+      size="lg"
     />
     <RoundButton
       @click.native="toggleFav"
