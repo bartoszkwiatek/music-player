@@ -3,7 +3,7 @@
     <RoundButton icon="fa-share-nodes" class="left" />
     <RoundButton
       @click.native="skip(previousSongIndex)"
-      :disabled="!previousSongIndex"
+      :disabled="previousSongIndex === null"
       icon="fa-backward-step"
       color="#fff"
       backgroundColor="#60558f"
@@ -12,7 +12,7 @@
     <PlayButton />
     <RoundButton
       @click.native="skip(nextSongIndex)"
-      :disabled="!nextSongIndex"
+      :disabled="nextSongIndex === null"
       icon="fa-forward-step"
       color="#fff"
       backgroundColor="#60558f"
@@ -70,11 +70,11 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
+  height: 100px;
 
   .left {
     margin-right: 35px;

@@ -57,6 +57,7 @@ library.add(
 
 import { mapMutations } from "vuex";
 import { songs } from "./assets/songs";
+import "./global.scss";
 
 export default {
   data() {
@@ -83,7 +84,7 @@ export default {
   z-index: 10;
   width: 360px;
   height: 480px;
-  background-color: #eeeff5;
+  background-color: var(--background-color);
   border-radius: 40px;
   overflow: hidden;
 }

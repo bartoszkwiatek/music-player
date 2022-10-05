@@ -1,9 +1,11 @@
 <template>
   <div>
-    <PlayerTopbar @open-playlist="onOpenPlaylist" />
-    <PlayerSong />
-    <PlayerVolume />
-    <PlayerControls />
+    <PlayerTopbar @open-playlist="onOpenPlaylist" class="top-bar" />
+    <div class="player">
+      <PlayerSong />
+      <PlayerVolume class="player-volume" />
+      <PlayerControls />
+    </div>
   </div>
 </template>
 
@@ -30,7 +32,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["playSong", "setSettings", "toggleFavourite"]),
+    ...mapMutations(["playSong", "toggleFavourite"]),
     onOpenPlaylist() {
       this.$emit("open-playlist");
     },
@@ -38,4 +40,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.player-volume {
+  position: relative;
+  bottom: 6px;
+}
+.top-bar {
+  position: absolute;
+  z-index: 10;
+}
+</style>

@@ -4,7 +4,7 @@
       v-for="[setting, value] in settingArray"
       :key="setting"
       @click.native="toggleSetting(setting)"
-      :color="value ? 'white' : 'gray'"
+      :color="value ? undefined : 'white'"
       :icon="settingIcon[setting]"
       backgroundColor="transparent"
       size="xl"
@@ -12,7 +12,7 @@
     <RoundButton
       @click.native="openPlaylist"
       icon="fa-bars"
-      color="gray"
+      color="#86899f"
       backgroundColor="transparent"
       class="menu"
       size="xl"

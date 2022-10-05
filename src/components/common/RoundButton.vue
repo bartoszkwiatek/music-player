@@ -27,7 +27,7 @@ export default {
     },
     size: {
       type: String,
-      default: "md",
+      default: null,
     },
   },
   components: { FontAwesomeIcon },
@@ -52,7 +52,7 @@ export default {
   background-color: var(--bg-color);
 
   &:disabled {
-    background-color: gray;
+    background-color: var(--gray-color);
   }
 
   &:hover:not(:disabled) {
